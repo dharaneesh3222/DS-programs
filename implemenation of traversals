@@ -13,7 +13,7 @@ struct Node *createNode(int d){
     return newNode;
 }
 
-// In-order DFS: Left, Root, Right
+
 void inOrderDFS(struct Node *node){
     if (node == NULL) return;
     inOrderDFS(node->left);
