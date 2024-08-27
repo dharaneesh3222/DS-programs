@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* left;
+    struct Node* right;
+};
+
+struct Node* newNode(int k) {
+    struct Node* node = (struct Node*
+                        )malloc(sizeof(struct Node));
+    node->data = k;
+    node->left = node->right = NULL;
+    return node;
+}
+
+// Function to search for a value in the binary tree using DFS
+int searchDFS(struct Node* root, int value) {
+    // Base case: If the tree is empty or we've reached a leaf node
+    if (root == NULL) return 0;
+    
+    // If the node's data is equal to the value we are searching for
+    if (root->data == value) return 1;
+    
+    // Recursively search in the left and right subtrees
+    int left_res = searchDFS(root->left, value);
+    int right_res = searchDFS(root->right, value);
+      return left_res || right_res;
+}
+
+int main() {
+    struct Node* root = newNode(2);
+    root->left = newNode(3);
+    root->right = newNode(4);
+    root->left->left = newNode(5);
+    root->left->right = newNode(6);
+
+    int value = 6;
+    if (searchDFS(root, value))
+        printf("%d is found in the binary tree\n", value);
+    else
+        printf("%d is not found in the binary tree\n", value);
+
+    return 0;
+}
