@@ -13,28 +13,24 @@ struct Node *createNode(int d){
     return newNode;
 }
 
-
 void inOrderDFS(struct Node *node){
     if (node == NULL) return;
     inOrderDFS(node->left);
     printf("%d ", node->data);
     inOrderDFS(node->right);
 }
-// Pre-order DFS: Root, Left, Right
 void preOrderDFS(struct Node *node){
     if (node == NULL) return;
     printf("%d ", node->data);
     preOrderDFS(node->left);
     preOrderDFS(node->right);
 }
-// Post-order DFS: Left, Right, Root
 void postOrderDFS(struct Node *node){
     if (node == NULL) return;
     postOrderDFS(node->left);
     postOrderDFS(node->right);
     printf("%d ", node->data);
 }
-// BFS: Level order traversal
 void BFS(struct Node *root){
     if (root == NULL) return;
     struct Node *queue[100];
